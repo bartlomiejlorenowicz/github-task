@@ -32,4 +32,11 @@ public class GlobalException {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(json);
     }
+
+    @ExceptionHandler(RepoNotFoundException.class)
+    public ResponseEntity<ApiError> handleRepoNotFound(RepoNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ApiError(404, ex.getMessage()));
+    }
+
 }

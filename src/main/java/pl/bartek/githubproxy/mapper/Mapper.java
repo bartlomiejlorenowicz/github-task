@@ -5,6 +5,8 @@ import pl.bartek.githubproxy.dto.github.GitHubBranch;
 import pl.bartek.githubproxy.dto.github.GitHubRepo;
 import pl.bartek.githubproxy.dto.response.GitHubBranchDto;
 import pl.bartek.githubproxy.dto.response.GitHubRepoResponseDto;
+import pl.bartek.githubproxy.dto.response.RepoResponse;
+import pl.bartek.githubproxy.model.RepoEntity;
 
 import java.util.List;
 
@@ -25,5 +27,9 @@ public class Mapper {
                 gitHubRepo.owner().login(),
                 branchDtos
         );
+    }
+
+    public RepoResponse toResponse(RepoEntity e) {
+        return new RepoResponse(e.getId(), e.getOwner(), e.getName());
     }
 }
